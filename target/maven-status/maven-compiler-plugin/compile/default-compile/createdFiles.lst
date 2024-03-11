@@ -1,0 +1,7 @@
+com\ista\springboot\app\models\service\IClienteService.class
+com\ista\springboot\app\models\entity\Cliente.class
+com\ista\springboot\app\models\dao\ClienteDaoImpl.class
+com\ista\springboot\app\SpringBootDataJpaApplication.class
+com\ista\springboot\app\models\service\ClienteServiceImpl.class
+com\ista\springboot\app\controllers\ClienteController.class
+com\ista\springboot\app\models\dao\IClienteDao.class

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container py-4">
+
+    <div class="card bg-light">
+
+        <div th:if="${success}" class="mensaje-flash mensaje-flash-success" th:text="${success}"></div>
+        <div th:if="${info}" class="mensaje-flash mensaje-flash-info" th:text="${info}"></div>
+        <div th:if="${error}" class="mensaje-flash mensaje-flash-error" th:text="${error}"></div>
+
+
+        <div class="card-header" th:text="${titulo}"></div>
+
+
+        <div class="card-body">
+
+
+            <h4 class="card-title">
+                <a th:href="@{/ticket}" class="btn btn-success btn-xs">Crear ticket</a>
+            </h4>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>fecha</th>
+                    <th>estado</th>
+                    <th>asunto</th>
+                    <th>departamento</th>
+                    <th>visualizar</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="ticket : ${tickets}">
+                    <td th:text="${ticket.id}"></td>
+                    <td th:text="${ticket.fecha}"></td>
+                    <td th:text="${ticket.estado}"></td>
+                    <td th:text="${ticket.asunto}"></td>
+
+                    <td th:text="${ticket.departamento}"></td>
+                    <td><a class="btn btn-primary btn-xs" th:href="@{/visualizar/} + ${ticket.id}"
+                           th:text="'visualizar'"></a></td>
+
+                </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+
+
+<style>
+    .mensaje-flash {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    .mensaje-flash-success {
+        background-color: #dff0d8;
+        color: #3c763d;
+    }
+
+    .mensaje-flash-info {
+        background-color: #d9edf7;
+        color: #31708f;
+    }
+
+    .mensaje-flash-error {
+        background-color: #f2dede;
+        color: #a94442;
+    }
+</style>
+</body>
+</html>

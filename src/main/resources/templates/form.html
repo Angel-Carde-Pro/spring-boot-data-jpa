@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+<header th:replace="layout/layout :: header"></header>
+
+
+<div class="container py-4">
+
+    <div class="card bg-light">
+
+        <div class="card-header" th:text="${titulo}"></div>
+
+        <div class="card-body">
+
+
+            <form th:action="@{/form}" th:object="${cliente}" method="post" enctype="multipart/form-data">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Nombre</td>
+                        <td><input type="text" th:field="*{nombre}" class="form-control"
+                                   placeholder="Ingrese el nombre"/></td>
+                    </tr>
+
+                    <tr>
+                        <td>Apellido</td>
+                        <td><input type="text" th:field="*{apellido}" class="form-control"
+                                   placeholder="Ingrese el apellido"/></td>
+                    </tr>
+
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="email" th:field="*{email}" class="form-control" placeholder="email@gmail.com"/>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>Foto</td>
+                        <td><input type="file" class="form-control" name="file"/></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="submit" value="Guardar Cliente" class="btn btn-primary"/></td>
+                    </tr>
+                </table>
+                <input type="hidden" th:field="*{id}"/>
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>
