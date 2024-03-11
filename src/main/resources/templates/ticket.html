@@ -1,180 +1,163 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="layout/layout :: head"></head>
+    <head th:replace="layout/layout :: head"></head>
 
-<body>
-<header th:replace="layout/layout :: header"></header>
-
-
-<div class="container py-4">
-
-    <div class="card bg-light">
-
-        <div class="card-header" th:text="${titulo}"></div>
-
-        <div class="card-body">
+    <body>
+        <header th:replace="layout/layout :: header"></header>
 
 
-            <small>Por favor, complete el siguiente Formulario para crear un nuevo ticket</small>
-            <form th:action="@{/ticket}" th:object="${ticket}" method="post" class="form" enctype="multipart/form-data">
-                <table class="table table-bordered">
-                    <div>
+        <div class="container py-4">
+
+            <div class="card bg-light">
+
+                <div class="card-header" th:text="${titulo}"></div> 
+
+                <div class="card-body">
 
 
-                        <tr>
-                            <td>Nombres Cliente</td>
-                            <td><input type="text" th:field="*{nombre}" class="form-control"
-                                       placeholder="Ingrese su nombre"/></td>
-                        </tr>
-
-                        <tr>
-                            <td>Email</td>
-                            <td><input type="email" th:field="*{email}" class="form-control"
-                                       placeholder="email@gmail.com"/></td>
-                        </tr>
-
-                        <tr>
-                            <td>Telefono</td>
-                            <td><input type="text" th:field="*{telefono}" class="form-control"
-                                       placeholder="Ingrese el telefono"/></td>
-                        </tr>
+                    <small>Por favor, complete el siguiente Formulario para crear un nuevo ticket</small>
+                    <form th:action="@{/ticket}" th:object="${ticket}" method="post" class="form" enctype="multipart/form-data">
+                        <table class="table table-bordered">
+                            <div>
 
 
-                </table>
-                <table table class="table table-bordered">
+                                <tr>
+                                    <td>Nombres Cliente</td>
+                                    <td><input type="text" th:field="*{nombre}"  class="form-control"placeholder="Ingrese su nombre"/></td>
+                                </tr>
 
-                    <div class="card-body">
-                        <h5>Detalles del ticket</h5>
-                        <small>Por favor describa su problema</small>
+                                <tr>
+                                    <td>Email</td>
+                                    <td><input type="email"   th:field="*{email}" class="form-control" placeholder="email@gmail.com"/></td>
+                                </tr> 
 
-                        <tr>
-                            <td>Asunto</td>
-                            <td><input type="text" th:field="*{asunto}" class="form-control"
-                                       placeholder="Ingrese el asunto"/></td>
-                        </tr>
-
-
-                        <tr>
-                            <td>Fecha</td>
-                            <td><input type="date" th:field="*{fecha}" class="form-control"/></td>
-                        </tr>
-
-                        <tr>
-                            <td>Temas de ayuda</td>
-                            <td>
-                                <select class="form-select" aria-label="Default select example" name="temaAyuda"
-                                        th:field="*{tema}">
-                                    <option value="none" th:selected="${ticket.tema == 'none'}">Seleccione tema de
-                                        ayuda
-                                    </option>
-                                    <option value="Infraestructura" th:selected="${ticket.tema == 'Infraestructura'}">
-                                        Infraestructura
-                                    </option>
-                                    <option value="Recursos" th:selected="${ticket.tema == 'Recursos'}">Recursos
-                                    </option>
-                                    <option value="Equipos" th:selected="${ticket.tema == 'Equipos'}">Equipos</option>
-                                </select>
-                            </td>
-                        </tr>
+                                <tr>
+                                    <td>Telefono</td>
+                                    <td><input type="text"  th:field="*{telefono}"  class="form-control"placeholder="Ingrese el telefono"/></td>
+                                </tr>
 
 
-                        <tr>
-                            <td>Departamento</td>
-                            <td>
-                                <select class="form-select" aria-label="Default select example" name="departamento"
-                                        th:field="*{departamento}">
-                                    <option value="1" th:selected="${ticket.departamento == '1'}">Seleccione
-                                        Departamento
-                                    </option>
-                                    <option value="finanzas" th:selected="${ticket.departamento == 'finanzas'}">
-                                        Finanzas
-                                    </option>
-                                    <option value="recursos Humanos"
-                                            th:selected="${ticket.departamento == 'Recursos humanos'}">Recursos Humanos
-                                    </option>
-                                    <option value="Software" th:selected="${ticket.departamento == 'Software'}">
-                                        Software
-                                    </option>
-                                    <option value="TICS" th:selected="${ticket.departamento == 'TICS'}">TICS</option>
-                                    <option value="Mantenimiento tecnico"
-                                            th:selected="${ticket.departamento == 'Mantenimiento tecnico'}">
-                                        Mantenimiento Tecnico
-                                    </option>
-                                </select>
-                            </td>
-                        </tr>
 
 
-                    </div>
 
-                </table>
-                <table table class="table table-bordered">
-                    <tr>
-                        <td>
-                            <!--<input type="file" class="form-control" name="file"/>-->
-                            <input type="file" class="form-control file-input" name="file"/>
-                        </td>
-                    </tr>
+                        </table>
+                        <table table class="table table-bordered">
+
+                            <div class="card-body">
+                                <h5>Detalles del ticket</h5>
+                                <small>Por favor describa su problema</small>
+
+                                <tr>
+                                    <td>Asunto</td>
+                                    <td><input type="text" th:field="*{asunto}"  class="form-control" placeholder="Ingrese el asunto"/></td>
+                                </tr>
 
 
-                </table>
-                <input type="submit" value="Guardar Ticket" class="btn btn-guardar"/>
 
-                <input type="hidden" th:field="*{id}"/>
-            </form>
+
+                                <tr>
+                                    <td>Fecha</td>
+                                    <td><input type="date" th:field="*{fecha}" class="form-control" /></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Temas de ayuda</td>
+                                    <td>
+                                        <select class="form-select" aria-label="Default select example" name="temaAyuda" th:field="*{tema}">
+                                            <option value="none" th:selected="${ticket.tema == 'none'}">Seleccione tema de ayuda</option>
+                                            <option value="Infraestructura" th:selected="${ticket.tema == 'Infraestructura'}">Infraestructura</option>
+                                            <option value="Recursos" th:selected="${ticket.tema == 'Recursos'}">Recursos</option>
+                                            <option value="Equipos" th:selected="${ticket.tema == 'Equipos'}">Equipos</option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>Departamento</td>
+                                    <td>
+                                        <select class="form-select" aria-label="Default select example" name="departamento" th:field="*{departamento}">
+                                            <option value="1" th:selected="${ticket.departamento == '1'}">Seleccione Departamento</option>
+                                            <option value="finanzas" th:selected="${ticket.departamento == 'finanzas'}">Finanzas</option>
+                                            <option value="recursos Humanos" th:selected="${ticket.departamento == 'Recursos humanos'}">Recursos Humanos</option>
+                                            <option value="Software" th:selected="${ticket.departamento == 'Software'}">Software</option>
+                                            <option value="TICS" th:selected="${ticket.departamento == 'TICS'}">TICS</option>
+                                            <option value="Mantenimiento tecnico" th:selected="${ticket.departamento == 'Mantenimiento tecnico'}">Mantenimiento Tecnico</option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+
+
+                            </div>
+
+                        </table>
+                        <table table class="table table-bordered">
+                            <tr>
+                                <td>
+                                    <!--<input type="file" class="form-control" name="file"/>-->
+                                    <input type="file" class="form-control file-input" name="file"/>
+                                </td>
+                            </tr>
+
+
+
+                        </table>
+                        <input type="submit" value="Guardar Ticket" class="btn btn-guardar" />
+
+                        <input type="hidden" th:field="*{id}"/>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<footer th:replace="layout/layout :: footer"></footer>
-<style>
-    .card-header {
-        font-family: initial;
-        color: #0a58ca;
+        <footer th:replace="layout/layout :: footer"></footer>
+        <style>
+            .card-header{
+                font-family: initial;
+                color:#0a58ca;
 
-    }
+            }
+            .file-input {
+                width: content-box;
 
-    .file-input {
-        width: content-box;
+                margin-bottom: 10px;
+            }
 
-        margin-bottom: 10px;
-    }
+            .btn-guardar{
+                background-color: darkseagreen;
+                color: white;
+                font-family: serif;
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+                display: inline-block;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                text-align: center;
+                text-decoration: none;
+                outline: none;
+                color: #fff;
+                background-color: #04AA6D;
+                border: none;
+                border-radius: 8px;
+                box-shadow: 0 9px #999;
+                width: 100%
+            }
+            .btn-guardar:hover {
+                background-color: #3e8e41
+            }
 
-    .btn-guardar {
-        background-color: darkseagreen;
-        color: white;
-        font-family: serif;
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        text-align: center;
-        text-decoration: none;
-        outline: none;
-        color: #fff;
-        background-color: #04AA6D;
-        border: none;
-        border-radius: 8px;
-        box-shadow: 0 9px #999;
-        width: 100%
-    }
-
-    .btn-guardar:hover {
-        background-color: #3e8e41
-    }
-
-    .btn-guardar:active {
-        background-color: #3e8e41;
-        box-shadow: 0 5px #666;
-        transform: translateX(4px);
-    }
+            .btn-guardar:active {
+                background-color: #3e8e41;
+                box-shadow: 0 5px #666;
+                transform: translateX(4px);
+            }
 
     form {
         margin-bottom: 10px; /* Ajusta el margen inferior para evitar superposición */
     }
 
-</style>
-</body>
+        </style>
+    </body>
 </html>
 

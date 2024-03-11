@@ -8,7 +8,6 @@ import com.ista.springboot.app.models.entity.Cliente;
 import com.ista.springboot.app.models.entity.Ticket;
 import com.ista.springboot.app.models.service.IClienteService;
 import com.ista.springboot.app.models.service.ITicketService;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,7 +15,6 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -30,7 +28,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
- * @author ANGEL CÁRDENAS
+ *
+ *
  */
 @Controller
 public class ClienteController {
@@ -49,6 +48,18 @@ public class ClienteController {
         return "inicio";
     }
 
+//     @RequestMapping({"/", "", "/list"})
+//    public String Ticket(Model model) {
+//             model.addAttribute("titulo","Abrir nuevo Ticket");
+//        return "list";
+//    }
+//    @RequestMapping(value = "/list", method = RequestMethod.GET)
+//    public String listarT(Model model) {
+//        model.addAttribute("titulo", "Listado de ticket");
+//        model.addAttribute("ticket", ticketService.findAll());
+//        return "list";
+//    }
+
     @RequestMapping(value = "/ticket")
     public String crearT(Map<String, Object> model) {
         Ticket ticket = new Ticket();
@@ -56,16 +67,18 @@ public class ClienteController {
         model.put("titulo", "Abrir nuevo ticket");
         return "ticket";
     }
-
-    @RequestMapping(value = "/ticket", method = RequestMethod.POST)
+@RequestMapping(value = "/ticket", method = RequestMethod.POST)
     public String guardarT(Ticket ticket, RedirectAttributes flash, @RequestParam("file") MultipartFile foto) {
         if (!foto.isEmpty()) {
+
+            //  Path directorioFotos = Paths.get("src//main//resources//static/uploads");
+            //  String rootPath = directorioFotos.toFile().getAbsolutePath();
             try {
                 byte[] bytes = foto.getBytes();
 
                 Path Rutaarchivo = Paths.get(rootPath + "//" + foto.getOriginalFilename());
                 Files.write(Rutaarchivo, bytes);
-                flash.addFlashAttribute("info", "Se ha subido correctamente la foto del ticket");
+                flash.addFlashAttribute("info", "Se ha subido correctamente la foto del ticket" );
                 ticket.setFoto(foto.getOriginalFilename());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -76,14 +89,13 @@ public class ClienteController {
         flash.addFlashAttribute("success", mensajeFls);
         return "redirect:list";
     }
-
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String listarT(Model model) {
         model.addAttribute("titulo", "Listado de tickets");
         model.addAttribute("tickets", ticketService.findAll());
         return "list";
     }
-
+    
     @GetMapping(value = "/visualizar/{id}")
     public String verT(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash) {
 
@@ -96,11 +108,11 @@ public class ClienteController {
         model.put("titulo", "Informacion del ticket" + ticket.getAsunto());
         return "visualizar";
     }
-
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @GetMapping(value = "/ver/{id}")
     public String ver(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash) {
-        Cliente cliente = clienteService.findOne(id);
 
+        Cliente cliente = clienteService.findOne(id);
         if (cliente == null) {
             flash.addFlashAttribute("error", "El cliente no se encuentra en la base de datos");
             return "redirect:/listar";
@@ -128,6 +140,9 @@ public class ClienteController {
     @RequestMapping(value = "/form", method = RequestMethod.POST)
     public String guardar(Cliente cliente, RedirectAttributes flash, @RequestParam("file") MultipartFile foto) {
         if (!foto.isEmpty()) {
+
+            //  Path directorioFotos = Paths.get("src//main//resources//static/uploads");
+            //  String rootPath = directorioFotos.toFile().getAbsolutePath();
             try {
                 byte[] bytes = foto.getBytes();
 
@@ -148,8 +163,8 @@ public class ClienteController {
 
     @RequestMapping(value = "/form/{id}")
     public String editar(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash) {
-        Cliente cliente = null;
 
+        Cliente cliente = null;
         if (id > 0) {
             cliente = clienteService.findOne(id);
             if (cliente == null) {
@@ -167,11 +182,12 @@ public class ClienteController {
 
     @RequestMapping(value = "/eliminar/{id}")
     public String eliminar(@PathVariable(value = "id") Long id, RedirectAttributes flash) {
+
         if (id > 0) {
             clienteService.delete(id);
             flash.addFlashAttribute("success", "Cliente eliminado con éxito");
         }
-
         return "redirect:/listar";
+
     }
 }

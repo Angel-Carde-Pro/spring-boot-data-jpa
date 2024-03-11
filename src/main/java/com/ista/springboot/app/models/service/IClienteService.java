@@ -5,10 +5,10 @@
 package com.ista.springboot.app.models.service;
 
 import com.ista.springboot.app.models.entity.Cliente;
-
 import java.util.List;
 
 /**
+ *
  * @author ANGEL CÁRDENAS
  */
 public interface IClienteService {

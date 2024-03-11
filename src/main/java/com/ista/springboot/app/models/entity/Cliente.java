@@ -13,11 +13,11 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-
 import java.io.Serializable;
 import java.util.Date;
 
 /**
+ *
  * @author ANGEL CÁRDENAS
  */
 @Entity
@@ -37,10 +37,9 @@ public class Cliente implements Serializable {
     private Date createAt;
 
     @PrePersist
-    public void prePersist() {
-        createAt = new Date();
+    public void prePersist(){
+        createAt= new Date();
     }
-
     private static final long serialVersionUID = 3283444068336136587L;
 
     public Long getId() {

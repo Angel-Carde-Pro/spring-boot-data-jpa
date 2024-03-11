@@ -6,15 +6,14 @@ package com.ista.springboot.app.models.service;
 
 import com.ista.springboot.app.models.dao.ITicketDao;
 import com.ista.springboot.app.models.entity.Ticket;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @author PC
+ *
+ * @author ANGEL CÁRDENAS
  */
 @Service
 public class TicketServiceImpl implements ITicketService {

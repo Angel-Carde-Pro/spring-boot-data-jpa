@@ -6,26 +6,25 @@ package com.ista.springboot.app.models.service;
 
 import com.ista.springboot.app.models.dao.IClienteDao;
 import com.ista.springboot.app.models.entity.Cliente;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
+ *
  * @author ANGEL CÁRDENAS
  */
 @Service
-public class ClienteServiceImpl implements IClienteService {
+public class ClienteServiceImpl implements IClienteService{
 
     @Autowired
     private IClienteDao clienteDao;
-
+    
     @Transactional(readOnly = true)
     @Override
     public List<Cliente> findAll() {
-        return clienteDao.findAll();
+       return clienteDao.findAll();
     }
 
     @Transactional
@@ -37,14 +36,14 @@ public class ClienteServiceImpl implements IClienteService {
     @Transactional(readOnly = true)
     @Override
     public Cliente findOne(Long id) {
-        return clienteDao.findOne(id);
+    return clienteDao.findOne(id);
     }
 
     @Transactional
     @Override
     public void delete(Long id) {
-        clienteDao.delete(id);
+       clienteDao.delete(id);
     }
-
-
+    
+    
 }

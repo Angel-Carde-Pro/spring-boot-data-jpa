@@ -5,11 +5,11 @@
 package com.ista.springboot.app.models.service;
 
 import com.ista.springboot.app.models.entity.Ticket;
-
 import java.util.List;
 
 /**
- * @author PC
+ *
+ * @author ANGEL CÁRDENAS
  */
 public interface ITicketService {
 

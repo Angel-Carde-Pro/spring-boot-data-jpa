@@ -9,11 +9,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
 import java.io.Serializable;
 
 /**
- * * @author ANGEL CÁRDENAS
+ *
+ * @author ANGEL CÁRDENAS
  */
 @Entity
 @Table(name = "tickets")

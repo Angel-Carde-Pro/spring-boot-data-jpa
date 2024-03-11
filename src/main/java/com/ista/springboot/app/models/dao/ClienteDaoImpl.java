@@ -9,12 +9,12 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 import java.util.List;
-
 import org.springframework.stereotype.Repository;
 
 import org.springframework.transaction.annotation.Transactional;
 
 /**
+ *
  * @author ANGEL CÁRDENAS
  */
 @Repository
@@ -35,8 +35,8 @@ public class ClienteDaoImpl implements IClienteDao {
     public void save(Cliente cliente) {
         if (cliente.getId() != null && cliente.getId() > 0) {
             em.merge(cliente);
-        } else {
-            em.persist(cliente);
+        }else{
+        em.persist(cliente);
         }
     }
 
@@ -47,7 +47,7 @@ public class ClienteDaoImpl implements IClienteDao {
 
     @Override
     public void delete(Long id) {
-        em.remove(findOne(id));
+       em.remove(findOne(id));
     }
 
 }
